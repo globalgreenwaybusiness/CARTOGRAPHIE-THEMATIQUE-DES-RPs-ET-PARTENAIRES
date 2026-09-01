@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portail interactif du portefeuille WPHF mis en œuvre avec ONU Femmes en République démocratique du Congo." />
+    <meta name="theme-color" content="#172b4d" />
+    <meta property="og:title" content="WPHF RDC | Portefeuille interactif ONU Femmes" />
+    <meta property="og:description" content="Explorez les investissements, partenaires et priorités du portefeuille WPHF RDC accompagné par ONU Femmes." />
+    <meta property="og:image" content="https://globalgreenwaybusiness.github.io/CARTOGRAPHIE-THEMATIQUE-DES-RPs-ET-PARTENAIRES/assets/images/hero.webp" />
+    <title>WPHF RDC | Portefeuille interactif ONU Femmes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3ynhZOZVvLZ7jrjTkfX9PRpFRpJQY=" crossorigin="" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Aller au contenu</a>
+
+    <header class="site-header" id="top">
+      <div class="nav-shell">
+        <a class="brand" href="#top" aria-label="Accueil WPHF RDC">
+          <span class="brand-mark" aria-hidden="true">W</span>
+          <span><strong>WPHF RDC</strong><small>Portefeuille interactif</small></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Navigation principale">
+          <a href="#dashboard">Données</a>
+          <a href="#impact">Action d’ONU Femmes</a>
+          <a href="#partners">Partenaires</a>
+          <a href="#methodology">Méthodologie</a>
+        </nav>
+        <div class="institutional-lockup" aria-label="Partenaires institutionnels">
+          <img src="assets/logos/un-women.png" alt="ONU Femmes" />
+          <span aria-hidden="true"></span>
+          <img src="assets/logos/wphf.png" alt="Women’s Peace & Humanitarian Fund" />
+        </div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+        <a href="#dashboard">Données</a>
+        <a href="#impact">Action d’ONU Femmes</a>
+        <a href="#partners">Partenaires</a>
+        <a href="#methodology">Méthodologie</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media" role="img" aria-label="Femmes participant à une initiative communautaire en République démocratique du Congo"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+          <div class="hero-copy reveal">
+            <p class="eyebrow light">Women’s Peace & Humanitarian Fund · République démocratique du Congo</p>
+            <h1 id="hero-title">Financer le leadership local.<br /><span>Rendre l’impact visible.</span></h1>
+            <p class="hero-lead">Une plateforme interactive pour explorer les investissements, les organisations partenaires et la couverture géographique du portefeuille WPHF accompagné par ONU Femmes.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#dashboard">Explorer les données</a>
+              <a class="button ghost" href="#partners">Découvrir les partenaires</a>
+            </div>
+          </div>
+          <div class="hero-proof reveal" aria-label="Chiffres clés du portefeuille">
+            <div><strong data-hero-kpi="partners">17</strong><span>partenaires locaux</span></div>
+            <div><strong data-hero-kpi="budget">1,76 M$</strong><span>budget consolidé</span></div>
+            <div><strong data-hero-kpi="provinces">3</strong><span>provinces couvertes</span></div>
+            <div><strong data-hero-kpi="ebola">300 k$</strong><span>mobilisés pour Ebola</span></div>
+          </div>
+        </div>
+        <p class="photo-credit">Photo illustrative : © ONU Femmes / Catianne Tijerina · <a href="https://wphfund.org/countries/drc/" target="_blank" rel="noreferrer">source WPHF</a></p>
+      </section>
+
+      <section class="impact-strip" aria-label="Promesse de la plateforme">
+        <div class="container impact-strip-grid">
+          <p><span>01</span><strong>Financement localisé</strong>Des ressources confiées à des organisations proches des communautés.</p>
+          <p><span>02</span><strong>Capacités durables</strong>Des investissements institutionnels qui renforcent la qualité et la pérennité.</p>
+          <p><span>03</span><strong>Réponse adaptative</strong>Une capacité d’ajustement face aux urgences, dont la prévention et la réponse à Ebola.</p>
+        </div>
+      </section>
+
+      <section class="section dashboard-section" id="dashboard" aria-labelledby="dashboard-title">
+        <div class="container">
+          <div class="section-heading split reveal">
+            <div>
+              <p class="eyebrow">Portefeuille en données</p>
+              <h2 id="dashboard-title">Une lecture dynamique, du financement au territoire</h2>
+            </div>
+            <p>Filtrez les projets pour comprendre qui agit, où, sur quelles priorités et avec quels volumes financiers.</p>
+          </div>
+
+          <div class="filter-panel reveal" aria-label="Filtres du portefeuille">
+            <label>Outcome<select id="filter-outcome"><option value="">Tous les Outcomes</option></select></label>
+            <label>Province<select id="filter-province"><option value="">Toutes les provinces</option></select></label>
+            <label>Thématique<select id="filter-theme"><option value="">Toutes les thématiques</option></select></label>
+            <label>Statut<select id="filter-status"><option value="">Tous les statuts</option></select></label>
+            <button class="reset-button" id="reset-filters" type="button">Réinitialiser</button>
+          </div>
+
+          <div class="kpi-grid reveal" aria-live="polite">
+            <article class="kpi-card"><span>Projets affichés</span><strong id="kpi-projects">—</strong><small id="kpi-filter-label">Portefeuille complet</small></article>
+            <article class="kpi-card"><span>Partenaires</span><strong id="kpi-partners">—</strong><small>Organisations principales</small></article>
+            <article class="kpi-card accent"><span>Budget</span><strong id="kpi-budget">—</strong><small>Montants de la source*</small></article>
+            <article class="kpi-card pink"><span>Contribution Ebola</span><strong id="kpi-ebola">—</strong><small id="kpi-ebola-share">— du budget filtré</small></article>
+          </div>
+
+          <div class="data-grid map-grid reveal">
+            <article class="panel map-panel">
+              <div class="panel-head">
+                <div><p class="mini-label">Couverture géographique</p><h3>Investissements par province</h3></div>
+                <div class="metric-switch" role="group" aria-label="Métrique de la carte">
+                  <button class="active" data-map-metric="budget" type="button">Budget</button>
+                  <button data-map-metric="projects" type="button">Projets</button>
+                  <button data-map-metric="ebola" type="button">Ebola</button>
+                </div>
+              </div>
+              <div id="map" aria-label="Carte interactive des projets WPHF en RDC"></div>
+              <div class="map-legend" id="map-legend"></div>
+            </article>
+            <aside class="panel province-panel" id="province-insight">
+              <p class="mini-label">Sélection active</p>
+              <h3>Trois provinces, des portefeuilles complémentaires</h3>
+              <p>Cliquez sur une province pour isoler ses projets et lire sa composition financière et thématique.</p>
+              <div class="province-rank" id="province-rank"></div>
+            </aside>
+          </div>
+
+          <div class="charts-grid reveal">
+            <article class="panel chart-panel"><div class="panel-head"><div><p class="mini-label">Allocation</p><h3>Budget par thématique</h3></div></div><div class="chart-wrap"><canvas id="theme-chart"></canvas></div></article>
+            <article class="panel chart-panel"><div class="panel-head"><div><p class="mini-label">Géographie</p><h3>Budget par province</h3></div></div><div class="chart-wrap"><canvas id="province-chart"></canvas></div></article>
+            <article class="panel chart-panel"><div class="panel-head"><div><p class="mini-label">Mise en œuvre</p><h3>Répartition par statut</h3></div></div><div class="chart-wrap"><canvas id="status-chart"></canvas></div></article>
+            <article class="panel chart-panel"><div class="panel-head"><div><p class="mini-label">Portefeuilles</p><h3>Répartition par Outcome</h3></div></div><div class="chart-wrap"><canvas id="outcome-chart"></canvas></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section impact-section" id="impact" aria-labelledby="impact-title">
+        <div class="container">
+          <div class="section-heading centered reveal">
+            <p class="eyebrow">La valeur ajoutée d’ONU Femmes</p>
+            <h2 id="impact-title">Transformer un fonds en capacités, protection et paix</h2>
+            <p>Le portefeuille montre une approche intégrée : financer l’action locale, consolider les organisations et adapter les interventions aux chocs.</p>
+          </div>
+          <div class="effectiveness-grid">
+            <article class="effect-card reveal"><span>01</span><h3>Porter les acteurs locaux au premier plan</h3><p><strong id="effect-partners">17 partenaires</strong> figurent dans le portefeuille consolidé pour agir au plus près des femmes et des filles.</p></article>
+            <article class="effect-card reveal"><span>02</span><h3>Renforcer l’institutionnel</h3><p><strong id="effect-capacity">8 projets</strong> investissent dans la gouvernance, les outils, les compétences et la viabilité des organisations.</p></article>
+            <article class="effect-card reveal"><span>03</span><h3>Relier humanitaire et développement</h3><p>Protection, consolidation de la paix, relèvement et résilience se combinent dans les mêmes territoires fragiles.</p></article>
+            <article class="effect-card reveal"><span>04</span><h3>Adapter rapidement la réponse</h3><p><strong id="effect-ebola">300 k$</strong> sont identifiés pour la prévention et la réponse à Ebola au sein des projets concernés.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-grid" aria-label="Axes thématiques">
+        <article class="story-card protection reveal"><img src="assets/images/protection.webp" alt="Femmes échangeant dans un cadre communautaire" /><div><p>Protection</p><h3>Des mécanismes plus proches des femmes et des filles</h3><span id="story-protection">—</span></div></article>
+        <article class="story-card peace reveal"><img src="assets/images/peace.webp" alt="Dialogue sur la participation des femmes à la paix" /><div><p>Paix & relèvement</p><h3>Faire des femmes des actrices centrales de la cohésion</h3><span id="story-peace">—</span></div></article>
+        <article class="story-card capacity reveal"><img src="assets/images/capacity.webp" alt="Sensibilisation et échange avec une communauté" /><div><p>Capacités</p><h3>Construire des organisations solides et durables</h3><span id="story-capacity">—</span></div></article>
+      </section>
+
+      <section class="section partners-section" id="partners" aria-labelledby="partners-title">
+        <div class="container">
+          <div class="section-heading split reveal">
+            <div><p class="eyebrow">Réseau de partenaires</p><h2 id="partners-title">Les organisations qui portent l’action</h2></div>
+            <p>Chaque fiche relie l’organisation, le projet, la province, la thématique et le financement associé.</p>
+          </div>
+          <div class="partner-toolbar reveal">
+            <label class="search-field"><span>Rechercher</span><input id="partner-search" type="search" placeholder="Organisation, acronyme, territoire…" /></label>
+            <p id="partner-count" aria-live="polite">— partenaire(s)</p>
+          </div>
+          <div class="partner-grid" id="partner-grid"></div>
+        </div>
+      </section>
+
+      <section class="section evidence-section" id="methodology" aria-labelledby="methodology-title">
+        <div class="container evidence-grid">
+          <div class="evidence-copy reveal">
+            <p class="eyebrow light">Transparence des données</p>
+            <h2 id="methodology-title">Des chiffres traçables, une lecture responsable</h2>
+            <p>La plateforme consolide les portefeuilles WPHF DRC Outcomes 5 et 6. Les libellés sources sont conservés, tandis que les provinces et thématiques sont harmonisées pour permettre les comparaisons.</p>
+            <ul>
+              <li>Une ligne correspond à un projet et à un partenaire principal.</li>
+              <li>Les localisations multiples sont ventilées sans dupliquer les budgets dans les totaux.</li>
+              <li>Les montants sont présentés en dollars des États-Unis selon la convention contextuelle WPHF, la devise n’étant pas explicitement indiquée dans les fichiers sources.</li>
+              <li>Les données décrivent les allocations et la couverture ; elles ne constituent pas encore une mesure d’impact auprès des bénéficiaires.</li>
+            </ul>
+          </div>
+          <aside class="source-card reveal">
+            <p class="mini-label">Sources principales</p>
+            <h3>Portefeuilles consolidés</h3>
+            <p>WPHF DRC 02000494 · Outcome 5<br />WPHF DRC 02001271 · Outcome 6</p>
+            <hr />
+            <p class="mini-label">Limites administratives</p>
+            <p>geoBoundaries COD ADM1, millésime représenté 2017.</p>
+            <hr />
+            <p class="mini-label">Dernière actualisation</p>
+            <p id="last-update">Septembre 2026</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container cta-inner reveal">
+          <div><p class="eyebrow light">Investir dans les femmes. Investir dans la paix.</p><h2>Un portefeuille localisé, lisible et prêt à mobiliser de nouveaux partenariats.</h2></div>
+          <a class="button light-button" href="#dashboard">Revenir aux données</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><a class="brand footer-brand" href="#top"><span class="brand-mark">W</span><span><strong>WPHF RDC</strong><small>Portefeuille interactif</small></span></a><p>Une visualisation indépendante des données de portefeuille, conçue pour soutenir la redevabilité, la visibilité et la mobilisation de ressources. Conception et visualisation : <strong>GGB Insight Africa</strong>.</p></div>
+        <div><h3>Explorer</h3><a href="#dashboard">Données</a><a href="#impact">Action d’ONU Femmes</a><a href="#partners">Partenaires</a></div>
+        <div><h3>Crédits visuels</h3><p id="visual-credits">Photo de couverture : ONU Femmes / Catianne Tijerina. Galerie : AFIA MAMA, via <a class="credit-link" href="https://wphfund.org/wphf-at-10/anny-modi/" target="_blank" rel="noreferrer">WPHF</a>. Les photographies illustrent le contexte WPHF en RDC et ne documentent pas nécessairement les 17 projets affichés.</p></div>
+      </div>
+      <div class="container footer-bottom"><span>© 2026 · Portefeuille WPHF RDC</span><span>Développé par GGB Insight Africa · Publication GitHub Pages</span></div>
+    </footer>
+
+    <dialog class="partner-modal" id="partner-modal" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" aria-label="Fermer">×</button>
+      <div id="modal-content"></div>
+    </dialog>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="js/app.js" type="module"></script>
+  </body>
+</html>
